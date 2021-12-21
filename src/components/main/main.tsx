@@ -1,0 +1,65 @@
+import React, { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import Card from "../card";
+import { Button, MainStyled, PleaseWait } from "../common-components";
+
+import { deleteDataRequest, getDataRequest } from "../../reducers/actions";
+
+import { TMainProps } from "./types";
+import { TProduct, TState } from "../../reducers/types";
+import { RootState } from "../../index";
+
+const selectPending = (state: TState) => state.isPending;
+
+export default function Main({
+  toggleLiked,
+  showOnlyLiked,
+  liked,
+}: TMainProps): JSX.Element {
+  const products: TProduct[] = useSelector<RootState, TProduct[]>(
+    (state) => state.products
+  );
+  const isPending = useSelector<RootState, boolean>(selectPending);
+  const dispatch = useDispatch();
+
+  return useMemo(() => {
+    if (isPending && products.length === 0) {
+      return <PleaseWait>Please wait...</PleaseWait>;
+    }
+    if (!isPending && products.length === 0) {
+      return (
+        <PleaseWait>
+          <Button onClick={() => dispatch(getDataRequest(20))}>
+            download 20 more
+          </Button>
+        </PleaseWait>
+      );
+    }
+    return (
+      <MainStyled>
+        {products.map((elem, index) => {
+          if (showOnlyLiked) {
+            if (!liked.includes(elem.id)) {
+              return null;
+            }
+          }
+          return (
+            <Card
+              description={elem.description}
+              price={elem.price}
+              url={elem.image}
+              likeActive={liked.includes(elem.id)}
+              onLike={toggleLiked}
+              onRemove={() => {
+                dispatch(deleteDataRequest(elem.id));
+              }}
+              key={index}
+              id={elem.id}
+            />
+          );
+        })}
+      </MainStyled>
+    );
+  }, [isPending, products, toggleLiked, showOnlyLiked, liked, dispatch]);
+}
