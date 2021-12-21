@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as Colors from "../../constants";
+import { ImageStyledProps, TStyledProps } from "./types";
 
 export const MainStyled = styled.div`
   width: 100vw;
@@ -10,6 +11,7 @@ export const MainStyled = styled.div`
   justify-content: center;
   grid-auto-flow: dense;
   margin-top: 60px;
+  margin-bottom: 60px;
   box-sizing: border-box;
   padding: 20px 0 20px 0;
 `;
@@ -58,10 +60,6 @@ export const ButtonStyled = styled.div`
   }
 `;
 
-type ImageStyledProps = {
-  url: string;
-};
-
 export const ImageStyled = styled.div<ImageStyledProps>`
   width: 50%;
   height: 160px;
@@ -108,10 +106,6 @@ export const HeaderStyled = styled.div`
   left: 0;
 `;
 
-type TStyledProps = {
-  checked?: boolean;
-};
-
 export const Button = styled.button<TStyledProps>`
   background-color: ${(props) => (props.checked ? "white" : Colors.BRAND_RED)};
   color: ${(props) => (props.checked ? Colors.PRIMARY_TEXT : "white")};
@@ -123,4 +117,21 @@ export const Button = styled.button<TStyledProps>`
     background-color: white;
     color: ${Colors.PRIMARY_TEXT};
   }
+`;
+
+export const Url = styled.a`
+  text-decoration: none;
+  color: white;
+`;
+
+export const FooterStyles = styled.div`
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0b1f35;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 `;

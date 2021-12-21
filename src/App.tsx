@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import * as Colors from "./constants";
+import Header from "./components/header";
+import Main from "./components/main";
+import { Button } from "./components/common-components";
+import Footer from "./components/footer";
 
 import { getDataRequest } from "./reducers/actions";
 
-import Header from "./components/header";
-import Main from "./components/main";
-
 import "./App.css";
-import styled from "styled-components";
-import { Button } from "./components/common-components";
 
-export default function App() {
+export default function App(): JSX.Element {
   const dispatch = useDispatch();
   const [liked, setLiked] = useState<number[]>([]);
   const [showOnlyLiked, setShowLiked] = useState<boolean>(false);
@@ -45,6 +43,10 @@ export default function App() {
         toggleLiked={toggleLiked}
         showOnlyLiked={showOnlyLiked}
         liked={liked}
+      />
+      <Footer
+        title={"View on Github"}
+        link={"https://github.com/saveliyshatrov/alfa_test"}
       />
     </>
   );

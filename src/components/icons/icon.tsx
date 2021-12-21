@@ -4,7 +4,7 @@ import Trash from "./trash-icon";
 import EmptyHeart from "./empty-heart";
 import FilledHeart from "./filled-heart";
 
-export default function Icon({ children, fill }: TIconProps) {
+export default function Icon({ children, fill }: TIconProps): JSX.Element {
   switch (children) {
     case "trash":
       return <Trash fill={fill} />;

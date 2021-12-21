@@ -1,7 +1,9 @@
 import React from "react";
 import { TIconProps_ } from "../types";
 
-export default function FilledHeart({ fill = "black" }: TIconProps_) {
+export default function FilledHeart({
+  fill = "black",
+}: TIconProps_): JSX.Element {
   return (
     <svg
       width="20"

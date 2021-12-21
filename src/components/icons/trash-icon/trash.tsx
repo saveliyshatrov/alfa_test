@@ -1,7 +1,7 @@
 import React from "react";
 import { TIconProps_ } from "../types";
 
-export default function Trash({ fill = "black" }: TIconProps_) {
+export default function Trash({ fill = "black" }: TIconProps_): JSX.Element {
   return (
     <svg
       width="20"
