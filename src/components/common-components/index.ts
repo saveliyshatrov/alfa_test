@@ -55,6 +55,7 @@ export const ButtonStyled = styled.div`
   background-color: transparent;
   border: none;
   transition: 200ms;
+  cursor: pointer;
   :hover {
     background-color: lightgrey;
   }
@@ -113,6 +114,7 @@ export const Button = styled.button<TStyledProps>`
   border-radius: 5px;
   border: 1px solid white;
   transition: 200ms;
+  cursor: pointer;
   :hover {
     background-color: white;
     color: ${Colors.PRIMARY_TEXT};
