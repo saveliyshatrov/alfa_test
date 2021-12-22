@@ -56,9 +56,6 @@ export const ButtonStyled = styled.div`
   border: none;
   transition: 200ms;
   cursor: pointer;
-  :hover {
-    background-color: lightgrey;
-  }
 `;
 
 export const ImageStyled = styled.div<ImageStyledProps>`
@@ -84,7 +81,7 @@ export const Description = styled.div`
   white-space: normal;
   max-height: 150px;
   display: -webkit-box;
-  color: #6d7986;
+  color: ${Colors.SECONDARY_TEXT};
 `;
 
 export const DescriptionWrapper = styled.div`
