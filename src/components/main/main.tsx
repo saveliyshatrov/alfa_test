@@ -39,23 +39,23 @@ export default function Main({
     return (
       <MainStyled>
         {products.map((elem, index) => {
+          const isLiked = liked.includes(elem.id);
           if (showOnlyLiked) {
-            if (!liked.includes(elem.id)) {
+            if (!isLiked) {
               return null;
             }
           }
           return (
             <Card
               description={elem.description}
-              price={elem.price}
               url={elem.image}
-              likeActive={liked.includes(elem.id)}
-              onLike={toggleLiked}
+              likeActive={isLiked}
+              onLike={() => toggleLiked(elem.id)}
               onRemove={() => {
                 dispatch(deleteDataRequest(elem.id));
+                isLiked && toggleLiked(elem.id);
               }}
               key={index}
-              id={elem.id}
             />
           );
         })}

@@ -19,7 +19,6 @@ export default function Card({
   onRemove,
   description,
   url,
-  id,
   likeActive,
 }: TCardProps): JSX.Element {
   return (
@@ -28,7 +27,7 @@ export default function Card({
         <ImageStyled url={url} />
       </ImageWrapper>
       <ButtonRow>
-        <ButtonStyled onClick={() => onLike(id)}>
+        <ButtonStyled onClick={onLike}>
           <Icon fill={likeActive ? Colors.BRAND_RED : undefined}>
             {likeActive ? "filled_heart" : "empty_heart"}
           </Icon>

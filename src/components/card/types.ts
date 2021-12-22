@@ -1,9 +1,7 @@
 export type TCardProps = {
-  onLike(id: number): void;
+  onLike(): void;
   onRemove(): void;
   description: string;
   url: string;
-  price: number;
-  id: number;
   likeActive: boolean;
 };
