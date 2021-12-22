@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Header from "./components/header";
@@ -15,18 +15,21 @@ export default function App(): JSX.Element {
   const [liked, setLiked] = useState<number[]>([]);
   const [showOnlyLiked, setShowLiked] = useState<boolean>(false);
 
-  const toggleLiked = (id: number) => {
-    if (liked.includes(id)) {
-      setLiked(liked.filter((elem) => elem !== id));
+  const toggleLiked = useCallback(
+    (id: number) => {
+      if (liked.includes(id)) {
+        setLiked(liked.filter((elem) => elem !== id));
+        return;
+      }
+      setLiked([...liked, id]);
       return;
-    }
-    setLiked([...liked, id]);
-    return;
-  };
+    },
+    [liked]
+  );
 
-  const toggleShowLiked = () => {
+  const toggleShowLiked = useCallback(() => {
     setShowLiked(!showOnlyLiked);
-  };
+  }, [showOnlyLiked]);
 
   useEffect(() => {
     //Максимальное количество предметов 20
